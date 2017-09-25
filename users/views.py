@@ -12,6 +12,7 @@ class Homeview(TemplateView):
         user = authenticate(self.request, username=username, password=password)
         if user is not None:
             login(self.request, user)
+
             print(user.has_perm("can_create_order"))
             if user.has_perm("can_create_order"):
                 return redirect("users:create")
