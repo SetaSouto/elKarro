@@ -1,6 +1,14 @@
 from django.db import models
 
-from products import models_choices
+
+class Product(models.Model):
+    """
+    Product
+    """
+    number = models.IntegerField()
+    # Optional name and description for the product
+    name = models.CharField(blank=True, null=True, max_length=100)
+    description = models.CharField(blank=True, null=True, max_length=500)
 
 
 class Order(models.Model):
@@ -11,13 +19,3 @@ class Order(models.Model):
     name = models.CharField(max_length=100)
     delivered = models.BooleanField(default=False)
     products = models.ManyToManyField(Product)
-
-
-class Product(models.Model):
-    """
-    Product
-    """
-    number = models.IntegerField(choices=models_choices.NUMBERS)
-    # Optional name and description for the product
-    name = models.CharField(blank=True, null=True, max_length=100)
-    description = models.CharField(blank=True, null=True, max_length=500)

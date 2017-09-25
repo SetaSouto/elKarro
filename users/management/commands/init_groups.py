@@ -10,7 +10,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         order_creators_group, _ = Group.objects.get_or_create(name="order_creators")
-        order_deliverers_group, _ = Group.objects.get_or_create(name="order_creators")
+        order_deliverers_group, _ = Group.objects.get_or_create(name="order_deliverers")
 
         ct = ContentType.objects.get_for_model(Order)
 
